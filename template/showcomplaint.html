@@ -1,0 +1,63 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<!--Show complaint -->
+                    
+<div class="row">
+                    <div class="col-12">
+                        {% for item in data %}
+                        <form name="form" action="{{ url_for('showcomplaint') }}"method="POST">
+                        
+                        <div class="card">
+                            <div class="card-body">
+<table class="table user-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">User Id</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">User Name</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Type</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Description</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                    
+                                            <tr>
+                                                <td>{{ item['user_id'] }}</td>
+                                                <input type="hidden" name="cid" value="{{ item['complaint_id'] }}" />
+                                                <td>{{ item['name'] }}</td>
+                                                <td>{{ item['type'] }}</td>
+                                                <td>{{ item['description'] }}</td>
+
+                                                {% if item['forward'] == "Yes" %}
+                                                <td><button class="btn btn-dark disabled mx-auto mx-md-0 text-white" type ="submit" name="button1">
+                                            Forwarded</button>
+                                             </td>
+                                                {% else %}
+                                                <td><button class="btn btn-warning mx-auto mx-md-0 text-white" type ="submit" name="button1">
+                                            Forward</button>
+                                             </td>
+                                            {% endif %}
+
+                                            
+
+                                            </tr>
+
+                                           
+                                        </tbody>
+                                    </table>
+    
+                                
+                            </div>
+                        </div>
+                        
+                    </form>
+                    {% endfor %}
+                    </div>
+
+</div>
+
+
+ <!-- End of show complaint -->
+
+
+{% endblock %}

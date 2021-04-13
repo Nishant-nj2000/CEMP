@@ -1,0 +1,85 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<!--Show complaint -->
+                    
+<div class="row">
+                    <div class="col-12">
+                        {% for item in data %}
+                        <div class="card">
+                            <div class="card-body">
+                                <form method="Post" action="{{url_for('viewform')}}">
+<table class="table user-table"> 
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Exam name</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Type</th>
+                                                 <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Name of Organisation</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Date of Opening</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Date Of Closing</th>
+                                               </tr>
+
+                                           </thead>
+                                           <tbody>
+                                             
+                                            <tr>
+                                                <td>{{ item['exam_name'] }}</td>
+                                                <td>{{ item['exam_type'] }}</td>
+                                                <td>{{ item['name_of_organisation'] }}</td>
+                                                <td>{{ item['date_of_opening'] }}</td>
+                                                <td>{{ item['date_of_closing'] }}</td>
+
+                                            
+                                            </tr>
+
+                                           
+                                        </tbody>
+
+                                       <thead>
+
+                                               <tr>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Fees</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Eligibility</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Date of exam</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Organisation Office</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Apply</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                             
+                                            <tr>
+                                                <td>{{ item['fees'] }}</td>
+                                                <td>{{ item['eligibility'] }}</td>
+                                                <td>{{ item['date_of_exam'] }}</td>
+                                                <td>{{ item['city'] }}</td>
+                                                {% if today>=item['date_of_opening'] and today<=item['date_of_closing'] %}
+                                                <td><button class="btn btn-warning mx-auto mx-md-0 text-white" type="submit" name="button1">
+                                            Apply
+                                            </button></td>
+                                            {% else %}
+                                            <td><button class="btn btn-dark disabled mx-auto mx-md-0 text-white">
+                                            N/A
+                                            </button></td>
+                                            {% endif %}
+                                            </tr>
+
+                                           
+                                        </tbody>
+
+                                        
+                                    </table>
+                                    <input type="hidden" name="fid" value="{{item['form_id']}}">
+                                    <input type="hidden" name="eid" value="{{item['exam_id']}}">
+    
+                                
+                            </div>
+                        </div>
+                         {% endfor %}
+                    </div>
+</div>
+
+
+ <!-- End of show complaint -->
+
+
+{% endblock %}

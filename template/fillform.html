@@ -1,0 +1,223 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<!--Show complaint -->
+                  
+
+                    <div class="col-12">
+                        {% for item in detail %}
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <form name="form" action="{{ url_for('fillform') }}"method="POST">
+                                <center><h3>NIMCET</h3></center>
+                                <br>
+                                <div class="row">
+                                    <div class="form-group col-6" style="font-weight: bold;padding-left: 200px;">
+                                        <label><h5 >Name :</h5></label>
+                                         </br>
+                                         <input class="au-input au-input--full" type="text" name="name" value="{{ item['name'] }}"  style="height: 40px; width: 300px" readonly>
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                         <label><h5 style="font-weight: bold;">Date of birth :</h5></label>
+                                            </br>
+                                                <input class="au-input au-input--full" type="text" id="doo" name="age" value="{{item['dob']}}"  style="height: 40px; width: 300px" readonly>
+                                    </div>
+
+                                 </div>
+
+
+
+                                <div class="row">
+                                    <div class="form-group col-6" style="font-weight: bold;padding-left: 200px;">
+                                        <label><h5 style="font-weight: bold;">Father Name :</h5></label>
+                                        </br>
+                                            <input class="au-input au-input--full" type="text" placeholder="father name"   style="height: 40px; width: 300px">
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                         <label><h5 style="font-weight: bold;">Mother Name :</h5></label>
+                                            </br>
+                                                <input class="au-input au-input--full" type="text" id="doo" placeholder="Mother name"   style="height: 40px; width: 300px">
+                                    </div>
+
+                                 </div>
+       
+
+
+                                <div class="row">
+                                    <div class="form-group col-6" style="font-weight: bold;padding-left: 200px;">
+                                        <label><h5 style="font-weight: bold;">Email :</h5></label>
+                                        </br>
+                                        <input class="au-input au-input--full" type="text"  value="{{item['email']}}"   style="height: 40px; width: 300px" readonly>
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                          <label><h5 style="font-weight: bold;">Phone Number :</h5></label>
+                                            </br>
+                                            <input class="au-input au-input--full" type="text"  value="{{item['phone']}}"  style="height: 40px; width: 300px" readonly>
+                                    </div>
+
+                                 </div>
+
+                            
+
+                                <div class="row">
+                                    <div class="form-group col-6" style="font-weight: bold;padding-left: 200px;">
+                                        <label><h5 style="font-weight: bold;">Gender :</h5></label>
+                                            </br>
+                                            <input class="au-input au-input--full" type="text"  value="{{item['gender']}}"  style="height: 40px; width: 300px" readonly>
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                          <label><h5 style="font-weight: bold;">Adhar Number :</h5></label>
+                                            </br>
+                                            <input class="au-input au-input--full" type="text"  value="{{item['Adhaar_number']}}"  style="height: 40px; width: 300px" readonly>
+                                    </div>
+
+                                 </div>
+
+                                <br>
+
+                                 <div class="row">
+                                    <div class="form-group col-6" style="font-weight: bold;padding-left: 200px;">
+                                        <label><h5 style="font-weight: bold;">Center 1 :</h5></label>
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                          <select class="form-control pl-0 form-control-line"   style="height: 40px; width: 300px" name="c1">
+                                                <option>Select</option>
+                                                {% for item in centre %}
+
+                                                <option value="{{item ['city']}}">{{item ['city']}}</option>
+                                                
+                                                {% endfor %}
+                                                
+                                            </select>
+                                    </div>
+
+                                 </div>
+
+                                  <div class="row">
+                                    <div class="form-group col-6" style="font-weight: bold;padding-left: 200px;">
+                                        <label><h5 style="font-weight: bold;">Center 2 :</h5></label>
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                          <select class="form-control pl-0 form-control-line"   style="height: 40px; width: 300px" name="c1">
+                                                <option>Select</option>
+                                                {% for item in centre %}
+
+                                                <option value="{{item ['city']}}">{{item ['city']}}</option>
+                                                
+                                                {% endfor %}
+                                                
+                                            </select>
+                                    </div>
+
+                                 </div>
+
+                                  <div class="row">
+                                    <div class="form-group col-6" style="font-weight: bold;padding-left: 200px;">
+                                        <label><h5 style="font-weight: bold;">Center 3 :</h5></label>
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                          <select class="form-control pl-0 form-control-line"   style="height: 40px; width: 300px" name="c1">
+                                                <option>Select</option>
+                                                {% for item in centre %}
+
+                                                <option value="{{item ['city']}}">{{item ['city']}}</option>
+                                                
+                                                {% endfor %}
+                                                
+                                            </select>
+                                    </div>
+
+                                 </div>  
+                                 <br>
+
+
+                                 <div class="row">
+                                    <div class="form-group col-6" style="font-weight: bold;padding-left: 200px;">
+                                        <label><h5 style="font-weight: bold;">Profile Photo :</h5></label>
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                          <input type="file" name="photo">
+                                    </div>
+
+                                 </div>  
+
+                                 <div class="row">
+                                    <div class="form-group col-6" style="font-weight: bold;padding-left: 200px;">
+                                        <label><h5 style="font-weight: bold;">Signature :</h5></label>
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                          <input type="file" name="sign">
+                                    </div>
+
+                                 </div>
+
+                                 <div class="row">
+                                    <div class="form-group col-6" style="font-weight: bold;padding-left: 200px;">
+                                        <label><h5 style="font-weight: bold;">SSC Marksheet:</h5></label>
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                          <input type="file" name="SSC10">
+                                    </div>
+
+                                 </div>
+
+
+                                 <div class="row">
+                                    <div class="form-group col-6" style="font-weight: bold;padding-left: 200px;">
+                                        <label><h5 style="font-weight: bold;">HSC Marksheet :</h5></label>
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                          <input type="file" name="HSC12">
+                                    </div>
+
+                                 </div>
+
+
+                                <center>
+                                 <button class="btn btn-primary" name="button1" type="submit" >Submit</button>
+                                <button class="btn btn-primary" name="button2" type="reset">Cancel</button>              
+                                </center>
+
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>                    
+
+   
+         <div class="form-group">
+                                        <div class="col-12" style="padding-left: 180px;">
+                                           
+                                        </div>
+                                    </div>
+                                    </form>
+
+
+    
+                                
+                            </div>
+                        </div>
+                    
+                    </div>
+
+</div>
+
+
+        
+
+
+ <!-- End of show complaint -->
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<!--Show complaint -->
+                    
+<div class="row">
+                    <div class="col-12">
+                        {% for item in data %}
+                        <form name="form" method="Post" action="{{url_for('managemanager')}}">
+                        <div class="card">
+                            <div class="card-body">
+<table class="table user-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Manager Id</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Name</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">gender</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">city</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Adhaar_number</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">AFL</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{ item['manager_id'] }}</td>
+                                                <input type="hidden" name="mid" value="{{ item['manager_id'] }}">
+                                                <td>{{ item['name'] }}</td>
+                                                <td>{{ item['gender'] }}</td>
+                                                <td>{{ item['city'] }}</td>
+                                                <td>{{ item['Adhaar_number'] }}</td>
+                                                <td>{{ item['afl'] }}</td>
+                                                <td>{{ item['status'] }}</td>
+                                                {% if item['status'] == "blocked "%}
+                                                <td><button class="btn btn-warning mx-auto mx-md-0 text-white disabled ">
+                                            Change Status
+                                            </button></td>
+                                            {% endif %}
+                                            {% if item['status'] == "Unblock" %}
+                                                <td><button class="btn btn-warning mx-auto mx-md-0 text-white" name="button1">
+                                            Change Status
+                                            </button></td>
+                                            {% endif %}
+                                            </tr>
+
+                                         
+                                        </tbody>
+                                    </table>
+    
+                                
+                            </div>
+                        </div>
+                    </form>
+                          {% endfor %}
+                    </div>
+</div>
+
+
+ <!-- End of show complaint -->
+
+
+{% endblock %}

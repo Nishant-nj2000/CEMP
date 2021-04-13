@@ -1,0 +1,100 @@
+{% extends "reports.html" %}
+{% block content %}
+
+<!--Update Passowrd Form -->
+
+<div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+<form method="POST" action="{{url_for('feedbackwise')}}">
+<div class="row">
+    <div class="col-4">
+       <label><h5 style="font-weight: bold;">User Type :</h5></label>
+                                     <center>
+                                            <select class="form-control pl-0 form-control-line" required style="height: 40px; width: 300px" name="user">
+                                                <option>select</option>
+                                                <option value="Candidate">Candidate</option>
+                                            </select>
+                                        </center>
+    </div>
+         
+   <div class="col-4">
+         <label><h5 style="font-weight: bold;">date from :</h5></label>
+        <input class="au-input au-input--full" type="date" id="ename" name="df" placeholder="Enter date" required style="height: 40px; width: 300px" required>
+    </div>
+    
+    <div class="col-4">
+        <label><h5 style="font-weight: bold;">date to :</h5></label>
+        <input class="au-input au-input--full" type="date" id="ename" name="dt" placeholder="Enter date" required style="height: 40px; width: 300px" required>            
+    </div> 
+    <div class="form-group">
+    <div class="col-sm-12 mt-3 ml-2 d-flex">
+    
+            <button class="btn btn-warning text-white mx-auto mx-md-0" type="submit" name="button1">submit</button> 
+            </div>    
+        </div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+
+    
+{% if ustype == "Candidate" %}
+            <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form method="POST" action="{{url_for('feedbackwise')}}">
+<table class="table user-table">
+   
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Id</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Name</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Gender</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Adhar no</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Email</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">City</th>
+
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                             {% for item in data %}
+                                             
+                                            <tr>
+                                                <td>{{ item['user_id'] }}</td>
+                                                <td>{{ item['name'] }}</td>  
+                                                <td>{{ item['gender'] }}</td> 
+                                                <td>{{ item['Adhaar_number'] }}</td>
+                                                <td>{{ item['email'] }}</td>
+                                                <td>{{ item['city'] }}</td>
+                                            </tr>
+
+                                           
+                                        </tbody>
+                                        {% endfor %}
+                                    </table>
+                                    </form>
+                        
+                                                   </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                                
+                              
+
+             
+
+
+
+
+{% endblock content%}

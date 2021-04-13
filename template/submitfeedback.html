@@ -1,0 +1,187 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<style type="text/css">
+ @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+  
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+</style>
+
+ <div class="container register">
+                          
+    
+<div class="row">
+                    <div class="col-lg-9 col-xlg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-body profile-card">
+                                 <form  action="{{url_for('submitfeedback')}}" method="post">
+
+                                    <h2 align="center"> We are happy to hear from you !! </h1> 
+                                        <br>
+                                     <div class="form-group">
+                                        
+                                         <label><h5 align="center" style="font-weight: normal;">Name : </h5></label>
+
+                                     <label><h5 style="font-weight: normal;padding-left: 100px;">{{ session['name'] }}</h5></label>
+                                     
+                                        
+                                    </div>
+
+                                    <div class="form-group">
+                                        
+                                         <label><h5 align= "center" style="font-weight: normal;">Email : </h5></label>
+
+                                     <label><h5 style="font-weight: normal;padding-left: 100px;">{{ session['email'] }}</h5></label>
+                                     
+                                        
+                                    </div>
+
+                                    <br>
+
+                                    <div class="form-group">
+                                       
+                                     <label><h5 style="font-weight: normal;">What should we change in order to live up to your expectations  :</h5></label>
+                                      <center>
+                                     <textarea rows="4" cols="90" name="desc"></textarea> 
+                                     </center>
+                                    </div>
+
+                                    <div class="form-group">
+                                       <div class="col-6">
+                                     <label><h5 style="font-weight: normal;">How much do you like us ?</h5></label>
+                                    </div>
+                                    
+                                    <div class="col-6">
+                                        <fieldset class="rating">
+                                            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                            <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                            <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                            <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                            <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                            <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                            <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                            <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                            <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                                            <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                        </fieldset>
+                                    </div>
+
+
+                                    </div>
+
+                                    <br>
+     
+                                    <div class="form-group">
+                                        <div class="col-12" style="padding-left: 180px;">
+                                            <button class="btn btn-warning text-white col-6" name="button1" type="Submit">Submit Feedback</button>
+                                        </div>
+                                    </div>
+
+
+                                    
+                            </form>
+                                       
+                        </div>
+                    </div>
+            </div>
+    </div>
+                                                
+</div>
+
+
+
+<script type="text/javascript">
+        /**
+ * Star rating class
+ * @constructor
+ */
+function StarRating() {
+  this.init();
+};
+
+/**
+ * Initialize
+ */
+StarRating.prototype.init = function() {
+  this.stars = document.querySelectorAll('#rating span');
+  for (var i = 0; i < this.stars.length; i++) {
+    this.stars[i].setAttribute('data-count', i);
+    this.stars[i].addEventListener('mouseenter', this.enterStarListener.bind(this));
+  }
+  document.querySelector('#rating').addEventListener('mouseleave', this.leaveStarListener.bind(this));
+};
+
+/**
+ * This method is fired when a user hovers over a single star
+ * @param e
+ */
+StarRating.prototype.enterStarListener = function(e) {
+  this.fillStarsUpToElement(e.target);
+};
+
+/**
+ * This method is fired when the user leaves the #rating element, effectively removing all hover states.
+ */
+StarRating.prototype.leaveStarListener = function() {
+  this.fillStarsUpToElement(null);
+};
+
+/**
+ * Fill the star ratings up to a specific position.
+ * @param el
+ */
+StarRating.prototype.fillStarsUpToElement = function(el) {
+  // Remove all hover states:
+  for (var i = 0; i < this.stars.length; i++) {
+    if (el == null || this.stars[i].getAttribute('data-count') > el.getAttribute('data-count')) {
+      this.stars[i].classList.remove('hover');
+    } else {
+      this.stars[i].classList.add('hover');
+    }
+  }
+};
+
+// Run:
+new StarRating();
+</script>
+
+{% endblock content %}

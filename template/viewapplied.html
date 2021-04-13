@@ -1,0 +1,49 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<!--Show complaint -->
+                    
+<div class="row">
+                    <div class="col-12">
+                        {% for item in data %}
+                        <div class="card">
+                            <div class="card-body">
+<table class="table user-table"> 
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Applied Id</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Registration Id</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Form Name</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Date of Filling</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Time of Filling</th>
+                                               </tr>
+
+                                           </thead>
+                                           <tbody>
+                                             
+                                            <tr>
+                                                <td>{{ item['applied_id'] }}</td>
+                                                <td>{{ item['registration_no'] }}</td>
+                                                <td>{{ item['form_name'] }}</td>
+                                                <td>{{ item['date_of_filling'] }}</td>
+                                                <td>{{ item['time_of_filling'] }}</td>
+
+                                            </tr>
+
+                                           
+                                        </tbody>
+
+                                        
+                                    </table>
+    
+                                
+                            </div>
+                        </div>
+                         {% endfor %}
+                    </div>
+</div>
+
+
+ <!-- End of show complaint -->
+
+
+{% endblock %}

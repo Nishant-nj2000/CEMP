@@ -1,0 +1,165 @@
+{% extends "reports.html" %}
+{% block content %}
+
+<!--Update Passowrd Form -->
+
+
+<div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form method="POST" action="{{url_for('formwise')}}">
+                                <div class="row">
+    <div class="col-4">
+        &nbsp;
+       <label><h5 style="font-weight: bold;">Exam Name :</h5></label>
+                                     <center>
+                                        
+                                            <select class="form-control pl-0 form-control-line"  style="height: 40px; width: 300px" name="fname">
+                                                <option>--Select--</option>
+                                                {% for item in form %}
+                                                <option value="{{item['form_name']}}">{{item['form_name']}}</option>
+                                                {% endfor %}
+                                            </select>
+                                            
+                                        </center>
+    </div>
+         
+   <div class="col-4">
+         <label><h5 style="font-weight: bold;">Opening date :</h5></label>
+        <input class="au-input au-input--full" type="date" id="ename" name="od" placeholder="Enter date (yyyy-mm-dd)" style="height: 40px; width: 300px" >
+    </div>
+    
+    <div class="col-4">
+        <label><h5 style="font-weight: bold;">Closing date :</h5></label>
+        <input class="au-input au-input--full" type="date" id="ename" name="cd" placeholder="Enter date (yyyy-mm-dd)"  style="height: 40px; width: 300px">            
+    </div>
+
+    <div class="col-4 mt-2">
+        <label><h5 style="font-weight: bold;">Centre :</h5></label>
+        <input class="au-input au-input--full" type="text" id="ename" name="city" placeholder="Centre City ( Ahmedabad )" style="height: 40px; width: 300px">            
+    </div>
+
+     
+    <div class="form-group">
+    <div class="col-sm-12 mt-5 ml-1 d-flex">
+        
+    
+            <button class="btn btn-warning text-white mx-auto mx-md-0" type="submit" name="button2" value="1">submit</button> 
+        
+            </div>    
+        </div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+{% if data|length %}
+            <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form method="POST" action="{{url_for('formwise')}}">
+<table class="table user-table">
+   
+                                        <thead>
+                                            <tr>
+                                                  
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Name</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Opening Date</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Closing Date</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Fees</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Eligility</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">City</th>
+                                              
+
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                             {% for item in data %}
+                                             
+                                            <tr>
+                                                <td>{{ item['form_name'] }}</td>  
+                                                <td>{{ item['date_of_closing'] }}</td> 
+                                                <td>{{ item['date_of_opening'] }}</td>
+                                                <td>{{ item['fees'] }}</td>
+                                                <td>{{ item['eligibility'] }}</td>
+                                                <td>{{ item['city']}}</td>
+                                                
+                                                
+                                            </tr>
+
+                                           
+                                        </tbody>
+                                        {% endfor %}
+                                        
+                                    </table>
+                                    </form>
+                        
+                                                   </div>
+                        </div>
+                    </div>
+                </div>
+               {% endif %}
+
+
+{% if data2|length %}
+            <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form method="POST" action="{{url_for('formwise')}}">
+<table class="table user-table">
+   
+                                        <thead>
+                                            <tr>
+                                                 <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Id</th> 
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Name</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Opening Date</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Closing Date</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Fees</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Eligility</th>
+                                              
+
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                             
+
+
+                                                {% for item in data2 %}
+                                             
+                                            <tr>
+                                                <td>{{ item['form_id'] }}</td> 
+                                                <td>{{ item['form_name'] }}</td>  
+                                                <td>{{ item['date_of_closing'] }}</td> 
+                                                <td>{{ item['date_of_opening'] }}</td>
+                                                <td>{{ item['fees'] }}</td>
+                                                <td>{{ item['eligibility'] }}</td>
+                                                
+                                            </tr>
+
+                                           
+                                        </tbody>
+                                        {% endfor %}
+                                        
+                                    </table>
+                                    </form>
+                        
+                                                   </div>
+                        </div>
+                    </div>
+                </div>
+               {% endif %}
+                                
+                              
+
+             
+
+
+
+
+{% endblock content%}

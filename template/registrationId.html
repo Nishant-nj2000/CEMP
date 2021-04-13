@@ -1,0 +1,37 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<!--Show complaint -->
+                    
+<div class="row">
+                    <div class="col-12">
+                        {% for item in data %}
+                        <form action="{{('registrationId')}}" method="Post">
+                        
+                        <div class="card">
+                            <div class="card-body">
+                            <center><h3><u> Registration successfull :</u></h3></center>
+                            <h4> Your registration is complete and your registration id is : {{ regid }}
+                            </h4>
+                        </br>
+                        <h4>Your password is : {{ pass }}
+    
+                                
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-warning mx-auto mx-md-0 text-white" type="submit" name="button1">
+                            Close
+                        </button>
+                        </div>
+                        </form>
+                        {% endfor %}
+
+                    </div>
+
+</div>
+
+
+ <!-- End of show complaint -->
+
+
+{% endblock %}

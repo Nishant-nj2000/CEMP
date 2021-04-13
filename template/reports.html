@@ -1,0 +1,70 @@
+{% extends "dashboard.html" %}
+{% block content %}
+
+<!--Update Passowrd Form -->
+
+<div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+            <a href="{{url_for('datewise') }}">                    
+        <button class="btn btn-primary mx-auto mx-md-0 text-white">
+            Date wise report
+          </button>
+          </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{{url_for('areawise') }}">
+        <button class="btn btn-primary mx-auto mx-md-0 text-white">Area wise Report</button>
+        </a>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{{url_for('complaintwise') }}">
+        <button class="btn btn-primary mx-auto mx-md-0 text-white">Complaint wise Report</button> 
+        </a>           
+    </div>      
+    </div>
+</div>              
+</div>
+<br>
+<div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+        <a href="{{url_for('feedbackwise') }}">
+        <button class="btn btn-primary mx-auto mx-md-0 text-white">Feedback wise report</button>
+    </a>
+    <a href="{{url_for('examwise') }}">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary mx-auto mx-md-0 text-white">Exam wise Report</button>
+    <a href="{{url_for('formwise') }}">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary mx-auto mx-md-0 text-white">Form wise Report</button>
+    </a>            
+    </div>      
+    </div>
+</div>
+</div>
+<br>
+<div class="row">
+    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+        <a href="{{url_for('candidatewise') }}">
+        <button class="btn btn-primary mx-auto mx-md-0 text-white">Candidate wise report</button>
+    </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            
+ 
+         <a href="{{url_for('managerwise') }}">
+        <button class="btn btn-primary mx-auto mx-md-0 text-white">Manager wise Report</button>
+    </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            
+    </div>
+   
+    </div>
+</div>
+                   
+</div>
+
+
+{% endblock content%}

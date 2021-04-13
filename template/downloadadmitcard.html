@@ -1,0 +1,61 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<!--Show complaint -->
+                    
+<div class="row">
+                    <div class="col-12">
+                        {% for item in data %}
+                        <div class="card">
+                            <div class="card-body">
+<table class="table user-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Form Name</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Submit Date</th>
+                                                 <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Submit Time</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Date of Exam</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Issue Date</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Availability</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Status</th>
+                                               
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                    
+                                            <tr>
+                                                <td>{{ item['form_name'] }}</td>
+                                                <td>{{ item['date_of_filling'] }}</td>
+                                                <td>{{ item['time_of_filling'] }}</td>
+                                                <td>{{ item['date_of_exam'] }}</td>
+                                                <td>{{ item['issue_date'] }}</td>
+                                                <td>{{ item['card_available'] }}</td>
+                                                {% if item['card_available']=="yes"%}
+                                                <td><button class="btn btn-warning mx-auto mx-md-0 text-white">
+                                            Download
+                                            </button></td>
+                                            {% else %}
+                                             <td><button class="btn btn-dark disabled mx-auto mx-md-0 text-white">
+                                            N/A
+                                            </button></td>
+                                            {% endif %}
+
+                                            </tr>
+
+                                           
+                                        </tbody>
+                                    </table>
+    
+                                
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+</div>
+
+
+ <!-- End of show complaint -->
+
+
+{% endblock %}

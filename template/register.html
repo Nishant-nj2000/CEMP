@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Register</title>
+
+
+    <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <!-- chartist CSS -->
+    <link href="{{ url_for('static', filename='dashboard/assets/plugins/chartist-js/dist/chartist.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='dashboard/assets/plugins/chartist-js/dist/chartist-init.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='dashboard/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css') }}" rel="stylesheet">
+    <!--This page css - Morris CSS -->
+    <link href="{{ url_for('static', filename='dashboard/assets/plugins/c3-master/c3.min.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='dashboard/html/css/style.min.css') }}" rel="stylesheet">
+</head>
+
+    <body>
+   
+    <header class="topbar" data-navbarbg="skin6">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+
+                <div class="navbar-header" data-logobg="skin6">
+                    
+                    <a class="navbar-brand ml-4" href="{{ url_for('main') }}">
+
+                        <img src="../static/main/images/logo2.png" alt="homepage" height="60px" width="200px" />
+                    </a>
+                 </div>
+
+
+
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                    
+                    <ul class="navbar-nav mr-auto mt-md-0 ">
+                         <li class="nav-item">
+                           
+                            
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="{{ url_for('main') }}">Home</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="{{ url_for('about') }}">About </a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="{{ url_for('login') }}">Login</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="">Contact us</a>
+                        </li>
+                    </ul>
+                </div>
+               
+            </nav>
+
+         </br>
+    </br>
+    
+    
+        <div class="container-fluid">
+          <div class="row justify-content-md-center">
+    
+        <div class="col-md-4 align-self-center">
+
+<div class="card">
+    <div class="card-body">
+    <div class="row justify-content-md-center">
+                                    <div class="col">
+                                        
+<div class="login-form">
+<div class="main-div">
+    <div class="panel">
+   <center><h2>Registeration</h2></center>
+   </div>
+    <form id="register" action="{{url_for('registerscreen')}}" method="post">
+       
+
+        <div class="row">
+            <div class="form-group col-6">
+                <label>Register As</label>
+                
+                <select class="au-input au-input--full" name="usertype" id="usertype" required style="height:40px;min-width:120px;">
+                <option value="Select" disabled selected hidden>----Select Role----</option>
+                <option value="Manager"> Manager</option>
+                <option value="Candidate"> Candidate</option>
+            </select>
+           
+            </div>
+
+            <div class="form-group col-6">
+                <label>Gender</label>
+                <select class="au-input au-input--full" name="gender" required style="height:40px;width:170px;">
+                <option value="" disabled selected hidden>----Select Gender----</option>
+                <option value="M"> Male </option>
+                <option value="F"> Female </option>
+                </select>
+            </div>
+
+         </div>
+
+        <div class="row">
+            <div class="form-group col-6">
+                <label>Name</label>
+                <input class="au-input au-input--full" type="name" id="name" name="name" placeholder="Enter name" required style="height: 40px;">
+            </div>
+
+            <div class="form-group col-6">
+                <label>Age</label>
+                <input class="au-input au-input--full" type="number" pattern="^(\d{2})$"  min="18" max="100" id="age" name="age" placeholder="Enter age" required style="height: 40px; width: 175px">
+            </div>
+        </div>
+
+
+
+         <div class="row">
+            <div class="form-group col-6">
+                <label>Phone</label>
+                <input class="au-input au-input--full" type="text" pattern="^(\d{10})$" id="phone" name="phone" placeholder="Enter phone no." required style="height: 40px;">
+            </div>
+
+            <div class="form-group col-6">
+                <label> Aadhaar number </label>
+                <br>
+                <input class="au-input au-input--full" type="text" pattern="^(\d{12})$"  id="aadhaar" name="aadhaar" placeholder="Enter Aadhaar number" required style="height: 40px;"> 
+                
+            </div>
+             
+        </div>
+
+        
+        <div class="row">
+            <div class="form-group col-6">
+                <label>Email</label>
+                <input class="au-input au-input--full" type="email" id="email" name="email" placeholder="Enter email id." required style="height: 40px; width: 410px;">
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="form-group col-6">
+                <label>Password</label>
+                <input class="au-input au-input--full" type="password" id="password" name="password" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required style="height: 40px; width: 410px;">
+                <br>
+                <input type="checkbox" onclick="myFunction()"> Show Password
+            </div>
+
+        </div>
+
+
+       
+        <div class="row">
+            <div class="form-group col-6">
+                <label>Address</label>
+                <textarea class="au-input au-input--full" type="text" id="address" name="address" placeholder="Enter addresss" required style="height: 40px; width: 410px;"></textarea>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="form-group col-6">
+                <label>City</label>
+                <input class="au-input au-input--full" type="text" id="city" name="city" placeholder="Enter city" required style="height: 40px;">
+            </div>
+
+            <div class="form-group col-6">
+                <label>State</label>
+                <input class="au-input au-input--full" type="text" id="state" name="state" placeholder="Enter state" required style="height: 40px;">
+            </div>
+            
+        </div>
+
+        
+
+   <div class="forgot">
+        Already have an account ?<a href="{{ url_for('login') }}">Sign In Here</a>
+</div>
+</br>   <center>
+        <button type="submit" class="btn btn-primary"> Register </button>
+        <button type="reset" class="btn btn-primary"> Reset </button>
+    </center>
+
+</form>
+    </div></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</header>
+<script>
+    function myFunction() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+</body>
+</html>

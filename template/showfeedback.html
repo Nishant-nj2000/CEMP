@@ -1,0 +1,42 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<!--Show complaint -->
+                    
+<div class="row">
+                    <div class="col-12">
+                    	{% for item in data %}
+                        <div class="card">
+                            <div class="card-body">
+                                    <table class="table user-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">User Id</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">User Name</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Feedback Description</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                             
+                                            <tr>
+                                                <td>{{ item['user_id'] }}</td>
+                                                <td>{{ item['name'] }}</td>
+                                                <td>{{ item['feedback_msg'] }}</td>
+                                            </tr>
+
+                                           
+                                        </tbody>
+                                    </table>
+    
+                                
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+</div>
+
+
+ <!-- End of show complaint -->
+
+
+{% endblock %}

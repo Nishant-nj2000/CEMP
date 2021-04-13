@@ -1,0 +1,265 @@
+{% extends "dashboard.html" %}
+{% block content %}
+
+
+ <div class="container register">
+                            <div class="row">
+                                
+                                <div class="col-md-7 register-right">
+                                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active btn btn-dark d-none d-md-inline-block text-white " id="form1-tab" data-toggle="tab" href="#form1" role="tab" aria-controls="form1" aria-selected="true">New Link<a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link btn btn-dark d-none d-md-inline-block text-white" id="form2-tab" data-toggle="tab" href="#form2" role="tab" aria-controls="form2" aria-selected="false">Update Link</a>
+                                        </li>
+                                    </ul>
+
+                                    <!-- new form start -->
+
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="form1" role="tabpanel" aria-labelledby="form1-tab">
+                                            <br>
+    
+<div class="row">
+                    <div class="col-lg-12 col-xlg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-body profile-card">
+                                 <form id="Login" action="{{url_for('Managelink')}}" method="post">
+                                    <div class="form-group">
+                                     <label><h5 style="font-weight: bold;padding-left: 100px;">Exam Name:</h5></label>
+                                     <center>
+                                            <select class="form-control pl-0 form-control-line" required style="height: 40px; width: 300px" name="ename">
+                                                <option>Select</option>
+                                                {% for item in exam %}
+                                                <option  value="{{ item['exam_id']}}">{{item['exam_name']}} -- {{ item['exam_id']}}
+                                                    {% endfor %}
+                                    
+                                            </select>
+                                        </center>
+                                    </div>
+
+                                    <div class="form-group">
+                                     <label><h5 style="font-weight: bold;padding-left: 100px;">Center Id :</h5></label>
+                                     <center>
+                                            <select class="form-control pl-0 form-control-line" required style="height: 40px; width: 300px" name="cid">
+                                                <option>Select</option>
+                                                {% for item in centre %}
+
+                                                <option value="{{item ['centre_id']}}">{{item ['centre_id']}}</option>
+                                                
+                                                {% endfor %}
+                                                
+                                            </select>
+                                        </center>
+                                    </div>
+          <div class="form-group">
+        <label><h5 style="font-weight: bold;padding-left: 100px;">Form Name :</h5></label>
+        </br>
+            <center>
+            <input class="au-input au-input--full" type="text" name="fname" placeholder="form name" required style="height: 40px; width: 300px">
+        </center>
+        </div>
+
+        <div class="form-group">
+        <label><h5 style="font-weight: bold;padding-left: 100px;">Opening Date :</h5></label>
+        </br>
+            <center>
+            <input class="au-input au-input--full" type="date" id="doo" name="doo" placeholder="Enter Date of Opening" required style="height: 40px; width: 300px">
+        </center>
+        </div>
+
+        <div class="form-group">
+            <label><h5 style="font-weight: bold;padding-left: 100px;">Closing Date :</h5></label>
+            </br>
+            <center>
+            <input class="au-input au-input--full" type="date" id="doc" name="doc" placeholder="Enter Date of Closing" required style="height: 40px; width: 300px">
+        </center>
+        </div>
+
+        <div class="form-group">
+            <label><h5 style="font-weight: bold;padding-left: 100px;">Form Fees :</h5></label>
+            </br>
+            <center>
+            <input class="au-input au-input--full" type="text" id="fees" name="fees" placeholder="Enter Form fees" required style="height: 40px; width: 300px">
+        </center>
+        </div>
+
+        <div class="form-group">
+            <label><h5 style="font-weight: bold;padding-left: 100px;">Eligibility :</h5></label>
+            </br>
+            <center>
+            <input class="au-input au-input--full" type="text" id="eli" name="eli" placeholder="Enter Eligibility" required style="height: 40px; width: 300px">
+        </center>
+        </div>
+
+        <div class="form-group">
+            <label><h5 style="font-weight: bold;padding-left: 100px;">Link :</h5></label>
+            </br>
+            <center>
+            <input class="au-input au-input--full" type="text" id="link" name="link" placeholder="Enter City" required style="height: 40px; width: 300px">
+        </center>
+        </div>
+        <div class="form-group">
+            <label><h5 style="font-weight: bold;padding-left: 100px;">Date of Exam :</h5></label>
+            </br>
+            <center>
+            <input class="au-input au-input--full" type="date" id="doe" name="doe" placeholder="Enter Date of exam" required style="height: 40px; width: 300px">
+        </center>
+        </div>
+   
+         <div class="form-group">
+                                        <div class="col-12" style="padding-left: 180px;">
+                                            <button class="btn btn-warning text-white col-6" name="button1">Add Link</button>
+                                        </div>
+                                    </div>
+
+
+    </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+</div>
+                                            
+                                        </div>
+
+                                        <!-- New link ends -->
+
+                <!-- Update Form Start-->
+
+<div class="tab-pane fade show" id="form2" role="tabpanel" aria-labelledby="form2-tab">
+                                        
+ 
+ </br>
+
+                    
+
+<div class="row">
+                    <div class="col-lg-12 col-xlg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                 <form id="Login" action="{{url_for('Managelink')}}" method="post">
+                                    <div class="form-group">
+                                     <label><h5 style="font-weight: bold;padding-left: 100px;">Form Name:</h5></label>
+                                     <center>
+                                            <select class="form-control pl-0 form-control-line" required style="height: 40px; width: 300px" plaveholder="Form Id" name="fname">
+                                                <option>Select</option>
+                                                {% for item in form %}
+                                                <option  value="{{item['form_id']}}">
+                                                    {{item['form_id']}} -- {{item['form_name']}}
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+                                        </center>
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                     <label><h5 style="font-weight: bold;padding-left: 100px;">Center Id :</h5></label>
+                                     <center>
+                                            <select class="form-control pl-0 form-control-line" required style="height: 40px; width: 300px" name="cid">
+                                                <option>Select</option>
+                                                {% for item in centre %}
+
+                                                <option value="{{item ['centre_id']}}">{{item ['centre_id']}}</option>
+                                                
+                                                {% endfor %}
+                                                
+                                            </select>
+                                        </center>
+                                    </div>
+                                     
+        <div class="form-group">
+        <label><h5 style="font-weight: bold;padding-left: 100px;">Form Name :</h5></label>
+        </br>
+            <center>
+            <input class="au-input au-input--full" type="text" name="fname" placeholder="form name" required style="height: 40px; width: 300px" required>
+        </center>
+        </div>
+
+        <div class="form-group">
+        <label><h5 style="font-weight: bold;padding-left: 100px;">Opening Date :</h5></label>
+        </br>
+            <center>
+            <input class="au-input au-input--full" type="date" id="doo" name="doo" placeholder="Enter Date of Opening" required style="height: 40px; width: 300px" required>
+        </center>
+        </div>
+
+        <div class="form-group">
+            <label><h5 style="font-weight: bold;padding-left: 100px;">Closing Date :</h5></label>
+            </br>
+            <center>
+            <input class="au-input au-input--full" type="date" id="doc" name="doc" placeholder="Enter DAte of Closing" required style="height: 40px; width: 300px" required>
+        </center>
+        </div>
+
+        <div class="form-group">
+            <label><h5 style="font-weight: bold;padding-left: 100px;">Form Fees :</h5></label>
+            </br>
+            <center>
+            <input class="au-input au-input--full" type="text" id="fees" name="fees" placeholder="Enter Form fees" required style="height: 40px; width: 300px" required>
+        </center>
+        </div>
+
+        <div class="form-group">
+            <label><h5 style="font-weight: bold;padding-left: 100px;">Eligibility :</h5></label>
+            </br>   
+            <center>
+            <input class="au-input au-input--full" type="text" id="eli" name="eli" placeholder="Enter Eligibility" required style="height: 40px; width: 300px" required>
+        </center>
+        </div>
+
+        <div class="form-group">
+            <label><h5 style="font-weight: bold;padding-left: 100px;">Link :</h5></label>
+            </br>
+            <center>
+            <input class="au-input au-input--full" type="text" id="link" name="link" placeholder="Enter City" required style="height: 40px; width: 300px" required>
+        </center>
+        </div>
+        <div class="form-group">
+            <label><h5 style="font-weight: bold;padding-left: 100px;">Date of Exam :</h5></label>
+            </br>
+            <center>
+            <input class="au-input au-input--full" type="date" id="doe" name="doe" placeholder="Enter Date of exam" required style="height: 40px; width: 300px" required>
+        </center>
+        </div>
+   
+         <div class="form-group">
+                                        <div class="col-12" style="padding-left: 180px;"> 
+                                            <button class="btn btn-warning text-white col-6" name="button2">Update Link</button>
+                                        </div>
+                                    </div>
+
+
+    </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+</div>
+                                            
+                                            
+
+                                                
+                                            </div>
+
+
+                                            
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+        
+
+</div>
+
+
+{% endblock content %}

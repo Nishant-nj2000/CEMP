@@ -1,0 +1,121 @@
+{% extends "reports.html" %}
+{% block content %}
+
+<!--Update Passowrd Form -->
+
+
+<div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form method="POST" action="{{url_for('examwise')}}">
+                                <div class="row">
+    <div class="col-4">
+        &nbsp;
+       <label><h5 style="font-weight: bold;">Exam Name :</h5></label>
+                                     <center>
+                                        
+                                            <select class="form-control pl-0 form-control-line"  style="height: 40px; width: 300px" name="ename">
+                                                <option>--Select--</option>
+                                                {% for item in exam %}
+                                                <option value="{{item['exam_name']}}">{{item['exam_name']}}</option>
+                                                {% endfor %}
+                                            </select>
+                                            
+                                        </center>
+    </div>
+         
+   <div class="col-4">
+    <label><h5 style="font-weight: bold;">Exam Type :</h5></label>
+   
+          <select class="form-control pl-0 form-control-line"  style="height: 40px; width: 300px" name="type">
+                                                <option>--Select--</option>
+                                                 {% for item in exam%}
+                                                <option value="{{item['exam_type']}}">{{item['exam_type']}}</option>
+                                                {% endfor %}
+                                            </select>
+                                            
+    </div>
+    <div class="col-4">
+        <label><h5 style="font-weight: bold; 100px;">Name of organisation :</h5></label>
+        
+          <select class="form-control pl-0 form-control-line" style="height: 40px; width: 300px" name="noo">
+                                                <option>--Select--</option>
+                                                {% for item in exam%}
+                                                <option value="{{item['name_of_organisation']}}">{{item['name_of_organisation']}}</option>
+                                                 {% endfor %}
+                                            </select>
+                                           
+    </div>
+     
+    <div class="form-group">
+    <div class="col-sm-12 mt-3 ml-2 d-flex">
+        
+    
+            <button class="btn btn-warning text-white mx-auto mx-md-0" type="submit" name="button2" value="1">submit</button> 
+        
+            </div>    
+        </div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+{% if evalue == "1" %}
+            <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form method="POST" action="{{url_for('examwise')}}">
+<table class="table user-table">
+   
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Id</th>
+                                                <th class="border-top-0" style="font-weight: bold;font-size: 17px;">Name</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Type</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Niche</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">Organisation</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">City</th>
+                                                <th class="border-top-0"style="font-weight: bold;font-size: 17px;">state</th>
+
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                             {% for item in data %}
+                                             
+                                            <tr>
+                                                <td>{{ item['exam_id'] }}</td>
+                                                <td>{{ item['exam_name'] }}</td>  
+                                                <td>{{ item['exam_type'] }}</td> 
+                                                <td>{{ item['exam_niche'] }}</td>
+                                                <td>{{ item['name_of_organisation'] }}</td>
+                                                <td>{{ item['city'] }}</td>
+                                                <td>{{ item['state'] }}</td>
+                                            </tr>
+
+                                           
+                                        </tbody>
+                                        {% endfor %}
+                                    </table>
+                                    </form>
+                        
+                                                   </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                                
+                              
+
+             
+
+
+
+
+{% endblock content%}

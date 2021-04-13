@@ -1,0 +1,104 @@
+{% extends "dashboard.html" %}
+{% block content %}
+
+
+ <div class="container register">
+                          
+    
+<div class="row">
+                    <div class="col-lg-9 col-xlg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-body profile-card">
+                                 <form action="{{url_for('submitcomplaint')}}" method="post">
+
+                                    <h2 align="center"> Complaint Box </h1> 
+                                        <br>
+                                     <div class="form-group">
+                                        
+                                         <label><h5 align="center" style="font-weight:normal;">Name : </h5></label>
+
+                                     <label><h5 style="font-weight:normal; padding-left: 100px;">{{ session['name'] }}</h5></label>
+                                     
+                                        
+                                    </div>
+
+                         
+                                <div class="form-group">
+                                        
+                                         <label><h5 align= "center" style="font-weight: normal;">Email : </h5></label>
+
+                                     <label><h5 style="font-weight: normal;padding-left: 100px;">{{ session['email'] }}</h5></label>
+                                     
+                                        
+                                </div>
+
+                                    <div class="form-group">
+                                        
+                                         <label><h5 style="font-weight: normal;">Select Reason : </h5></label>
+                                         <select class="form-control pl-0 form-control-line" required style="height: 40px; width: 250px; border-color: black;" required name="type">
+                                                <option value="">  <---Select complaint type---></option>
+                                                <option value="Link Unavailable">Link Unavailable</option>
+                                                <option value="Exam Unavailable">Exam Unavailable</option>
+                                                <option value="Course Unavailable">Course Unavailable</option>
+                                                <option value="Can't Enroll">Can't Enroll</option>
+                                                <option value="Form Unavailable">Form Unavailable</option>
+                                                <option value="Form Unavailable">Other</option>
+                                                
+                                                
+                                            </select>
+                                    
+
+
+                                     
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        
+                                         <label><h5 style="font-weight: normal;">Select Form : </h5></label>
+                                         <select class="form-control pl-0 form-control-line" style="height: 40px; width: 250px; border-color: black;" required name="fname">
+                                                <option>  <---Select Form name---></option>
+                                                    {% for item in data %}
+                                                <option value="{{ item['form_id'] }}">{{ item['form_name'] }}</option>
+                                                {% endfor %}
+                                                
+                                            </select>
+                                    
+
+
+                                     
+                                        
+                                    </div>
+                            
+                                    
+                                
+
+                                    <div class="form-group">
+                                       
+                                     <label><h5 style="font-weight: normal;">Enter Complaint Description</h5></label>
+                                      <center>
+                                     <textarea rows="4" cols="90" required name="desc"></textarea> 
+                                     </center>
+                                    </div>
+                                    <br>
+     
+                                    <div class="form-group">
+                                        <div class="col-12" style="padding-left: 180px;">
+                                            <button class="btn btn-warning text-white col-6" name="button1" type="Submit">Submit Complaint</button>
+                                        </div>
+                                    </div>
+
+
+                                    
+                            </form>
+                                       
+                        </div>
+                    </div>
+            </div>
+    </div>
+                                                
+</div>
+
+
+
+
+{% endblock content %}
